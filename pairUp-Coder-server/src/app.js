@@ -45,7 +45,7 @@ const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
 
  
 io.on("connection", (socket) => {
-  console.log("User connected:");
+  console.log("User connected:",);
 
   // Fetch previous messages
   socket.on('fetchMessages', async ({ userId }) => {
@@ -85,7 +85,7 @@ io.on("connection", (socket) => {
 });
 
 
-app.use(express.static(path.join(__pathName , "/pairUp-Coder-client/dist")))
+app.use(express.static(path.join(__pathName , "/pairUp-Coder-client/dist/")))
 app.get("*" , (req ,res)=>{
   res.sendFile(path.resolve(__pathName ,"/pairUp-Coder-client" ,"dist" ,"index.html"))
 })

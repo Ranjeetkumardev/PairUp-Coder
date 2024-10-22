@@ -9,6 +9,7 @@ import Connections from "./components/Connections";
 import Requests from "./components/Requests";
 import ChatBox from "./components/chatBox";
 import NotFound from "./components/NotFound";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <BrowserRouter basename="/">
           <Routes>
             <Route path="/" element={<Body />}>
+             
               <Route path="/" element={<Feed />} />
               <Route path="/login" element={<Login />} />
               <Route path="/profile" element={<Profile />} />
