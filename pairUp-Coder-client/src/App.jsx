@@ -13,24 +13,6 @@ import Home from "./components/Home";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [isAuthenticated , setIsAuthenticated] =  useState(false)
-  useEffect(() => {
-    const getCookies = (name) => {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
-      return null;
-    };
-
-    const token = getCookies('token');
-    if (token) {
-      setIsAuthenticated(true);
-    }else{
-      setIsAuthenticated(false)
-    }
-  }, [isAuthenticated]);
- 
-
   return (
     <>
       <Provider store={appStore}>

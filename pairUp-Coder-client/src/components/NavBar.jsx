@@ -22,7 +22,7 @@ const NavBar = () => {
   return (
     <div className="navbar bg-base-300 sticky top-0 z-40">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">
+        <Link to={user ?"/feed" : "/"} className="btn btn-ghost text-xl">
           👩‍💻 PairUp
         </Link>
       </div>

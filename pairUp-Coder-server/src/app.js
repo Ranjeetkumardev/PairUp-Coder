@@ -40,9 +40,6 @@ app.use("/", authRouter);
 app.use("/", profileRouter);
 app.use("/", requestRouter);
 app.use("/", userRouter);
-app.use("/" ,(req ,res)=>{
-   console.log("home page")
-})
 
 const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
 
