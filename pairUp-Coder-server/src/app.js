@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const { Server } = require("socket.io");
 const { createServer } = require('node:http');
+const path = require('node:path');
 
 const app = express();
 const server = createServer(app);
@@ -16,6 +17,8 @@ const io = new Server(server, {
 });
 
 dotenv.config()
+const __pathName = path.resolve();
+ 
 
 app.use(
   cors({
@@ -42,7 +45,7 @@ const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
 
  
 io.on("connection", (socket) => {
-  console.log("User connected:", socket.id);
+  console.log("User connected:");
 
   // Fetch previous messages
   socket.on('fetchMessages', async ({ userId }) => {
@@ -77,11 +80,15 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
-    console.log("User disconnected:", socket.id);
+    console.log("User disconnected:");
   });
 });
 
 
+app.use(express.static(path.join(__pathName , "/pairUp-Coder-client/dist")))
+app.get("*" , (req ,res)=>{
+  res.sendFile(path.resolve(__pathName ,"/pairUp-Coder-client" ,"dist" ,"index.html"))
+})
 connectDB()
   .then(() => {
     console.log("Database connection established...");

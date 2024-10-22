@@ -23,13 +23,11 @@ const ChatBoxModal = ({ selectedConnection, onClose }) => {
 
       // Listen for incoming messages
       socket.on('newMessage', (message) => {
-        console.log("New message:", message);
         setMessages((prevMessages) => [...prevMessages, message]);
       });
 
       // Listen for previous messages
       socket.on('previousMessages', (previousMessages) => {
-        console.log("Previous messages:", previousMessages);
         setMessages(previousMessages);
       });
 

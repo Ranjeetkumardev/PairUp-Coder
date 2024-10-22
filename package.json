@@ -4,9 +4,10 @@
   "description": "tinder for devs",
   "main": "app.js",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
-  },
+  "dev": "nodemon pairUp-Coder-server/src/app.js",
+  "build": "npm install && npm install --prefix pairUp-Coder-client && npm run build --prefix pairUp-Coder-client",
+  "start": "node pairUp-Coder-server/src/app.js"
+},
   "keywords": [
     "nodejs",
     "javascript"
