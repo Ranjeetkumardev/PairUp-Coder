@@ -10,16 +10,35 @@ import Requests from "./components/Requests";
 import ChatBox from "./components/chatBox";
 import NotFound from "./components/NotFound";
 import Home from "./components/Home";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [isAuthenticated , setIsAuthenticated] =  useState(false)
+  useEffect(() => {
+    const getCookies = (name) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      return null;
+    };
+
+    const token = getCookies('token');
+    if (token) {
+      setIsAuthenticated(true);
+    }else{
+      setIsAuthenticated(false)
+    }
+  }, [isAuthenticated]);
+ 
+
   return (
     <>
       <Provider store={appStore}>
         <BrowserRouter basename="/">
           <Routes>
             <Route path="/" element={<Body />}>
-             
-              <Route path="/" element={<Feed />} />
+              <Route path="/" element={ <Home/>} />
+              <Route path="/feed" element={ <Feed/>} />
               <Route path="/login" element={<Login />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/chatbox/:userId" element={<ChatBox />} />
