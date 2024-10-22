@@ -22,7 +22,7 @@ const __pathName = path.resolve();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin:[ "http://localhost:5173" ,"https://pairup-coder-1.onrender.com/"],
     credentials: true,
   })
 );
